@@ -18,7 +18,11 @@ app.get("/api/:name",async (req, res)=> {
   res.json(response)
 })
 app.get("/",async (req, res)=> {
-  const baseURL='https://uatspringmoney.frappe.cloud/api/resource/Health Check Form Result?order_by="creation desc" & limit_page_length=100';
+  let baseURL='https://uatspringmoney.frappe.cloud/api/resource/Health Check Form Result';
+  // let baseURL='https://uatspringmoney.frappe.cloud/api/resource/Health Check Form Result?fields=["name","user_name","user_email_id","phone_number", "total_score","total_progress","health_check_user", "health_check_lead_profile"]&order_by=creation desc&limit_page_length=100';
+  baseURL=new URL(baseURL)
+  let obj={fields:'["name","user_name","user_email_id","phone_number", "total_score","total_progress","health_check_user", "health_check_lead_profile"]',limit_page_length:100,order_by:'creation desc'}
+  baseURL.search = new URLSearchParams(obj);
   let response= await fetch(baseURL, {
       mode: "cors",
       method:"GET",
@@ -28,7 +32,6 @@ app.get("/",async (req, res)=> {
       },
     })
     response= await response.json();
-    console.log(response)
     res.json(response)
 })
 
