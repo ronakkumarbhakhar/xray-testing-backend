@@ -28,6 +28,7 @@ app.get("/",async (req, res)=> {
       },
     })
     response= await response.json();
+    console.log(response)
     res.json(response)
 })
 
