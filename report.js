@@ -3,6 +3,70 @@ const cors=require('cors');
 const app=express();
 app.use(express.json());
 app.use(cors());
+
+app.post("/userdeletion",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  let response= await fetch(baseURL, {
+    mode: "cors",
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+    body:JSON.stringify(req.body.data),
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+app.post("/userdeletion/verify",async (req, res)=> {
+  let url=req.body.url
+  const baseURL=url;
+  let response= await fetch(baseURL, {
+    mode: "cors",
+    method:"GET",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+app.post("/userdeletion/otp/mobile",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  let response= await fetch(baseURL, {
+    mode: "cors",
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+app.post("/userdeletion/otp/email",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  let response= await fetch(baseURL, {
+    mode: "cors",
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+    body:JSON.stringify(req.body.data),
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+// xray server
 app.get("/api/:name",async (req, res)=> {
   let name=req.params.name
   const baseURL=`https://uatspringmoney.frappe.cloud/api/resource/Health Check Form Result/${name}`;
