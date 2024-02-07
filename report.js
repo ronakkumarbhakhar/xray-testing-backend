@@ -9,6 +9,7 @@ app.use(cors());
 app.post("/incometax",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
+  console.log(req.body)
   let response= await fetch(baseURL, {
     method:"GET",
     headers: {
