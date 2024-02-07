@@ -1,17 +1,10 @@
 const express =require('express');
 const cors=require('cors');
 const app=express();
-const UserAgent = require('user-agents');  
 
 app.use(express.json());
 app.use(cors());
 
-app.get("/test",async (req, res)=> {
-  const userAgent = new UserAgent(); 
-  console.log(userAgent.toString());
-  console.log(req.headers['x-forwarded-for']);
-  res.json({data:req.socket.remoteAddress})
-})
 
 app.post("/incometax",async (req, res)=> {
   let url=req.body.url;
