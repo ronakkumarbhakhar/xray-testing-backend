@@ -10,7 +10,6 @@ app.post("/incometax",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"GET",
     headers: {
       "Content-Type":"application/json",
@@ -25,7 +24,6 @@ app.post("/userdeletion",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"POST",
     headers: {
       "Content-Type":"application/json",
@@ -41,7 +39,6 @@ app.post("/userdeletion/verify",async (req, res)=> {
   let url=req.body.url
   const baseURL=url;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"GET",
     headers: {
       "Content-Type":"application/json",
@@ -56,7 +53,6 @@ app.post("/userdeletion/otp/mobile",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"POST",
     headers: {
       "Content-Type":"application/json",
@@ -71,7 +67,6 @@ app.post("/userdeletion/otp/email",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"POST",
     headers: {
       "Content-Type":"application/json",
@@ -88,7 +83,6 @@ app.get("/api/:name",async (req, res)=> {
   let name=req.params.name
   const baseURL=`https://uatspringmoney.frappe.cloud/api/resource/Health Check Form Result/${name}`;
   let response= await fetch(baseURL, {
-    mode: "cors",
     method:"GET",
     headers: {
       "Content-Type":"application/json",
@@ -105,8 +99,7 @@ app.get("/",async (req, res)=> {
   let obj={fields:'["name","user_name","user_email_id","phone_number", "total_score","total_progress","health_check_user", "health_check_lead_profile"]',limit_page_length:100,order_by:'creation desc'}
   baseURL.search = new URLSearchParams(obj);
   let response= await fetch(baseURL, {
-      mode: "cors",
-      method:"GET",
+        method:"GET",
       headers: {
         "Content-Type":"application/json",
         "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
