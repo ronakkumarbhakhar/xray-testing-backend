@@ -1,8 +1,34 @@
 const express =require('express');
 const cors=require('cors');
 const app=express();
+const UserAgent = require('user-agents');  
+
 app.use(express.json());
 app.use(cors());
+
+app.get("/test",async (req, res)=> {
+  const userAgent = new UserAgent(); 
+  console.log(userAgent.toString());
+  console.log(req.headers['x-forwarded-for']);
+  res.json({data:req.socket.remoteAddress})
+})
+
+app.post("/incometax",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  let response= await fetch(baseURL, {
+    mode: "cors",
+    method:"GET",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+  })
+  response= await response.json();
+  const userAgent = new UserAgent(); 
+  console.log(userAgent.toString());
+  res.json(response)
+})
 
 app.post("/userdeletion",async (req, res)=> {
   let url=req.body.url;
