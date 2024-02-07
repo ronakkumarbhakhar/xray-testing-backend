@@ -18,8 +18,6 @@ app.post("/incometax",async (req, res)=> {
     },
   })
   response= await response.json();
-  const userAgent = new UserAgent(); 
-  console.log(userAgent.toString());
   res.json(response)
 })
 
