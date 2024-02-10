@@ -6,6 +6,54 @@ app.use(express.json());
 app.use(cors());
 
 
+
+app.post("/currentquestion",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  console.log(req.body)
+  let response= await fetch(baseURL, {
+    method:"GET",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    }
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+app.post("/prevquestion",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  console.log(req.body)
+  let response= await fetch(baseURL, {
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+    body:JSON.stringify(req.body.data)
+  })
+  response= await response.json();
+  res.json(response)
+})
+
+app.post("/nextquestion",async (req, res)=> {
+  let url=req.body.url;
+  const baseURL=url;
+  console.log(req.body)
+  let response= await fetch(baseURL, {
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Authorization":"token c94aaa32165ea3e:ee2011e98c07351"
+    },
+    body:JSON.stringify(req.body.data)
+  })
+  response= await response.json();
+  res.json(response)
+})
+
 app.post("/incometax",async (req, res)=> {
   let url=req.body.url;
   const baseURL=url;
